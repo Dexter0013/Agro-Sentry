@@ -1,0 +1,14 @@
+{
+  "name": "agro-sentry",
+  "version": "1.0.0",
+  "description": "Agricultural monitoring and sensor system",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Build completed - static files ready'",
+    "start": "echo 'Starting Agro-Sentry application'",
+    "dev": "echo 'Development server for Agro-Sentry'"
+  },
+  "keywords": ["agriculture", "monitoring", "sensors", "iot"],
+  "author": "",
+  "license": "ISC"
+}
