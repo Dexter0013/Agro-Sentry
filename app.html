@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroSentry App</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Main Application -->
+    <div id="app-container" class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <button id="sidebar-toggle" class="btn btn--secondary btn--sm" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation">☰</button>
+                <div class="logo">
+                    <span class="logo-icon">🌱</span>
+                    <span class="logo-text">AgroSentry</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="notification-bell">
+                    🔔 <span class="notification-count">3</span>
+                </div>
+                <div class="user-info">
+                    <span id="user-name">Dr. Priya Sharma</span>
+                    <a href="index.html" id="logout-btn" class="btn btn--outline btn--sm">Logout</a>
+                </div>
+            </div>
+        </header>
+        <div class="app-main">
+            <!-- Sidebar Navigation -->
+            <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+            <nav id="sidebar" class="sidebar" tabindex="-1">
+                <ul class="nav-menu">
+                    <li><a href="#" data-section="dashboard" class="nav-link active">📊 Dashboard</a></li>
+                    <li><a href="#" data-section="field-maps" class="nav-link">🗺️ Field Maps</a></li>
+                    <li><a href="#" data-section="analytics" class="nav-link">📈 Analytics</a></li>
+                    <li><a href="#" data-section="sensors" class="nav-link">🌡️ Sensors</a></li>
+                    <li><a href="#" data-section="drone-feed" class="nav-link">🚁 Drone Feed</a></li>
+                    <li><a href="#" data-section="reports" class="nav-link">📋 Reports</a></li>
+                    <li><a href="#" data-section="settings" class="nav-link">⚙️ Settings</a></li>
+                </ul>
+            </nav>
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <!-- Dashboard Section -->
+                <section id="dashboard-section" class="content-section active">
+                    <div class="section-header">
+                        <h2>Dashboard Overview</h2>
+                        <p>Real-time monitoring of your agricultural operations</p>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="card stat-card">
+                            <div class="stat-header">
+                                <h3>North Field A</h3>
+                                <span class="status status--success">Healthy</span>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">85%</div>
+                                <div class="stat-label">Health Score</div>
+                                <div class="stat-meta">15.2 acres • Wheat</div>
+                            </div>
+                        </div>
+                        <div class="card stat-card">
+                            <div class="stat-header">
+                                <h3>South Field B</h3>
+                                <span class="status status--warning">Warning</span>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">67%</div>
+                                <div class="stat-label">Health Score</div>
+                                <div class="stat-meta">22.8 acres • Rice</div>
+                            </div>
+                        </div>
+                        <div class="card stat-card">
+                            <div class="stat-header">
+                                <h3>East Field C</h3>
+                                <span class="status status--error">Critical</span>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-value">45%</div>
+                                <div class="stat-label">Health Score</div>
+                                <div class="stat-meta">18.5 acres • Corn</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dashboard-row">
+                        <div class="card quick-stats">
+                            <h3>Environmental Conditions</h3>
+                            <div class="stats-row">
+                                <div class="stat-item">
+                                    <div class="stat-icon">🌡️</div>
+                                    <div class="stat-details">
+                                        <div class="stat-value">28.5°C</div>
+                                        <div class="stat-label">Temperature</div>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-icon">💧</div>
+                                    <div class="stat-details">
+                                        <div class="stat-value">72%</div>
+                                        <div class="stat-label">Humidity</div>
+                                    </div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-icon">🏔️</div>
+                                    <div class="stat-details">
+                                        <div class="stat-value">68%</div>
+                                        <div class="stat-label">Soil Moisture</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card alerts-panel">
+                            <h3>Recent Alerts</h3>
+                            <div class="alerts-list">
+                                <div class="alert-item alert-critical">
+                                    <div class="alert-icon">⚠️</div>
+                                    <div class="alert-content">
+                                        <div class="alert-title">Pest Risk Alert</div>
+                                        <div class="alert-message">High risk of aphid infestation in East Field C</div>
+                                        <div class="alert-time">1 hour ago</div>
+                                    </div>
+                                </div>
+                                <div class="alert-item alert-warning">
+                                    <div class="alert-icon">🟡</div>
+                                    <div class="alert-content">
+                                        <div class="alert-title">Low Soil Moisture</div>
+                                        <div class="alert-message">South Field B showing declining moisture levels</div>
+                                        <div class="alert-time">2 hours ago</div>
+                                    </div>
+                                </div>
+                                <div class="alert-item alert-info">
+                                    <div class="alert-icon">ℹ️</div>
+                                    <div class="alert-content">
+                                        <div class="alert-title">Weather Update</div>
+                                        <div class="alert-message">Rainfall expected in next 48 hours</div>
+                                        <div class="alert-time">4 hours ago</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Field Maps Section -->
+                <section id="field-maps-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Interactive Field Maps</h2>
+                        <div class="field-selector">
+                            <select class="form-control">
+                                <option value="all">All Fields</option>
+                                <option value="north-a">North Field A</option>
+                                <option value="south-b">South Field B</option>
+                                <option value="east-c">East Field C</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <div class="map-controls">
+                            <h4>Layer Controls</h4>
+                            <div class="layer-toggles">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    Vegetation Index
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    Soil Health
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    Pest Risk
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    Temperature
+                                </label>
+                            </div>
+                        </div>
+                        <div class="map-display">
+                            <div class="map-grid">
+                                <div class="field-zone healthy" data-field="North Field A">
+                                    <div class="zone-label">North Field A</div>
+                                    <div class="zone-status">Healthy</div>
+                                </div>
+                                <div class="field-zone warning" data-field="South Field B">
+                                    <div class="zone-label">South Field B</div>
+                                    <div class="zone-status">Warning</div>
+                                </div>
+                                <div class="field-zone critical" data-field="East Field C">
+                                    <div class="zone-label">East Field C</div>
+                                    <div class="zone-status">Critical</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="map-legend">
+                            <h4>Health Status Legend</h4>
+                            <div class="legend-items">
+                                <div class="legend-item">
+                                    <div class="legend-color healthy"></div>
+                                    <span>Healthy (70-100%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color warning"></div>
+                                    <span>Warning (40-69%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color critical"></div>
+                                    <span>Critical (0-39%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Analytics Section -->
+                <section id="analytics-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Temporal Trends & Analytics</h2>
+                        <div class="date-range-selector">
+                            <input type="date" class="form-control" value="2025-09-25">
+                            <span>to</span>
+                            <input type="date" class="form-control" value="2025-09-29">
+                        </div>
+                    </div>
+                    <div class="analytics-grid">
+                        <div class="card chart-card">
+                            <h4>Vegetation Index (NDVI) Trends</h4>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="ndvi-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="card chart-card">
+                            <h4>Environmental Parameters</h4>
+                            <div class="chart-container" style="position: relative; height: 300px;">
+                                <canvas id="environmental-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Sensors Section -->
+                <section id="sensors-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Environmental Sensor Data</h2>
+                        <div class="last-updated">Last updated: Just now</div>
+                    </div>
+                    <div class="sensors-grid">
+                        <div class="card sensor-card">
+                            <h4>🏔️ Soil Moisture</h4>
+                            <div class="sensor-display">
+                                <div class="progress-ring">
+                                    <div class="progress-value">68%</div>
+                                </div>
+                                <div class="sensor-status status--success">Optimal</div>
+                            </div>
+                        </div>
+                        <div class="card sensor-card">
+                            <h4>🌡️ Air Temperature</h4>
+                            <div class="sensor-display">
+                                <div class="progress-ring">
+                                    <div class="progress-value">28.5°C</div>
+                                </div>
+                                <div class="sensor-status status--success">Normal</div>
+                            </div>
+                        </div>
+                        <div class="card sensor-card">
+                            <h4>💧 Humidity</h4>
+                            <div class="sensor-display">
+                                <div class="progress-ring">
+                                    <div class="progress-value">72%</div>
+                                </div>
+                                <div class="sensor-status status--success">Good</div>
+                            </div>
+                        </div>
+                        <div class="card sensor-card">
+                            <h4>🍃 Leaf Wetness</h4>
+                            <div class="sensor-display">
+                                <div class="progress-ring">
+                                    <div class="progress-value">15%</div>
+                                </div>
+                                <div class="sensor-status status--info">Low</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card historical-data">
+                        <h4>Historical Sensor Readings</h4>
+                        <div class="data-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp</th>
+                                        <th>Soil Moisture (%)</th>
+                                        <th>Temperature (°C)</th>
+                                        <th>Humidity (%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>18:00</td>
+                                        <td>70</td>
+                                        <td>25.8</td>
+                                        <td>78</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15:00</td>
+                                        <td>68</td>
+                                        <td>28.5</td>
+                                        <td>72</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12:00</td>
+                                        <td>65</td>
+                                        <td>26.2</td>
+                                        <td>75</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <!-- Drone Feed Section -->
+                <section id="drone-feed-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Live Drone Feed Integration</h2>
+                        <div class="drone-status">
+                            <span class="status status--success">Connected</span>
+                            <span class="battery-level">Battery: 78%</span>
+                        </div>
+                    </div>
+                    <div class="drone-interface">
+                        <div class="card drone-feed">
+                            <h4>Live Video Feed</h4>
+                            <div class="video-placeholder">
+                                <div class="video-overlay">
+                                    <div class="recording-indicator">🔴 LIVE</div>
+                                    <div class="timestamp" id="live-timestamp">18:30:45</div>
+                                </div>
+                                <div class="video-content">
+                                    <div class="placeholder-text">Drone Camera Feed</div>
+                                    <div class="feed-info">North Field A - Altitude: 150m</div>
+                                </div>
+                            </div>
+                            <div class="drone-controls">
+                                <button class="btn btn--primary" id="start-stream">Start Stream</button>
+                                <button class="btn btn--secondary" id="capture-image">Capture Image</button>
+                                <button class="btn btn--secondary" id="start-record">Record</button>
+                            </div>
+                        </div>
+                        <div class="card drone-metadata">
+                            <h4>Drone Telemetry</h4>
+                            <div class="metadata-grid">
+                                <div class="metadata-item">
+                                    <div class="metadata-label">GPS Coordinates</div>
+                                    <div class="metadata-value">26.1445°N, 91.7362°E</div>
+                                </div>
+                                <div class="metadata-item">
+                                    <div class="metadata-label">Altitude</div>
+                                    <div class="metadata-value">150m</div>
+                                </div>
+                                <div class="metadata-item">
+                                    <div class="metadata-label">Speed</div>
+                                    <div class="metadata-value">5.2 m/s</div>
+                                </div>
+                                <div class="metadata-item">
+                                    <div class="metadata-label">Battery Level</div>
+                                    <div class="metadata-value">78%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card flight-history">
+                        <h4>Flight History</h4>
+                        <div class="data-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Duration</th>
+                                        <th>Area Covered</th>
+                                        <th>Images Captured</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Sep 29, 2025</td>
+                                        <td>45 min</td>
+                                        <td>North Field A</td>
+                                        <td>127</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sep 28, 2025</td>
+                                        <td>38 min</td>
+                                        <td>South Field B</td>
+                                        <td>98</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sep 27, 2025</td>
+                                        <td>52 min</td>
+                                        <td>East Field C</td>
+                                        <td>156</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <!-- Reports Section -->
+                <section id="reports-section" class="content-section">
+                    <div class="section-header">
+                        <h2>AI Predictions & Reporting</h2>
+                        <button class="btn btn--primary">Generate New Report</button>
+                    </div>
+                    <div class="reports-grid">
+                        <div class="card predictions-card">
+                            <h4>Risk Predictions</h4>
+                            <div class="predictions-list">
+                                <div class="prediction-item">
+                                    <div class="prediction-field">North Field A</div>
+                                    <div class="prediction-risk">
+                                        <span class="risk-type">Disease Risk:</span>
+                                        <span class="status status--success">Low</span>
+                                        <span class="confidence">92% confidence</span>
+                                    </div>
+                                    <div class="recommendation">Continue current monitoring schedule</div>
+                                </div>
+                                <div class="prediction-item">
+                                    <div class="prediction-field">South Field B</div>
+                                    <div class="prediction-risk">
+                                        <span class="risk-type">Drought Stress:</span>
+                                        <span class="status status--warning">Medium</span>
+                                        <span class="confidence">78% confidence</span>
+                                    </div>
+                                    <div class="recommendation">Increase irrigation frequency</div>
+                                </div>
+                                <div class="prediction-item">
+                                    <div class="prediction-field">East Field C</div>
+                                    <div class="prediction-risk">
+                                        <span class="risk-type">Pest Outbreak:</span>
+                                        <span class="status status--error">High</span>
+                                        <span class="confidence">85% confidence</span>
+                                    </div>
+                                    <div class="recommendation">Apply targeted pest control measures immediately</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card report-generation">
+                            <h4>Generate Reports</h4>
+                            <div class="form-group">
+                                <label class="form-label">Report Type</label>
+                                <select class="form-control">
+                                    <option>Field Health Summary</option>
+                                    <option>Environmental Analysis</option>
+                                    <option>Pest Risk Assessment</option>
+                                    <option>Yield Prediction</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Date Range</label>
+                                <input type="date" class="form-control" value="2025-09-01">
+                                <input type="date" class="form-control" value="2025-09-29">
+                            </div>
+                            <div class="report-actions">
+                                <button class="btn btn--primary">Download PDF</button>
+                                <button class="btn btn--secondary">Download CSV</button>
+                                <button class="btn btn--secondary">Email Report</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Settings Section -->
+                <section id="settings-section" class="content-section">
+                    <div class="section-header">
+                        <h2>User Settings</h2>
+                        <p>Manage your profile and preferences</p>
+                    </div>
+                    <div class="settings-grid">
+                        <div class="card profile-settings">
+                            <h4>Profile Information</h4>
+                            <form id="profile-form">
+                                <div class="form-group">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" value="Dr. Priya Sharma">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" value="priya.sharma@agro.com">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Role</label>
+                                    <select class="form-control">
+                                        <option selected>Agronomist</option>
+                                        <option>Farmer</option>
+                                        <option>Technician</option>
+                                        <option>Researcher</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn--primary">Update Profile</button>
+                            </form>
+                        </div>
+                        <div class="card notification-settings">
+                            <h4>Notification Preferences</h4>
+                            <div class="notification-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    Email alerts for critical issues
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    Daily health summaries
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    Weather notifications
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    Pest risk alerts
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    Weekly reports
+                                </label>
+                            </div>
+                            <button class="btn btn--primary">Save Preferences</button>
+                        </div>
+                        <div class="card data-upload">
+                            <h4>Data Upload</h4>
+                            <div class="upload-section">
+                                <div class="form-group">
+                                    <label class="form-label">Upload Sensor Data</label>
+                                    <input type="file" class="form-control" accept=".csv,.json">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Upload Field Images</label>
+                                    <input type="file" class="form-control" accept="image/*" multiple>
+                                </div>
+                                <button class="btn btn--primary">Upload Files</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <!-- Field Detail Modal -->
+    <div id="field-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-field-name">Field Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-field-details">
+                    <!-- Field details will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+    <script src="app.js"></script>
+</body>
+</html>

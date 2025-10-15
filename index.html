@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroSentry - Agricultural Monitoring Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Login/Registration Section -->
+    <div id="auth-section" class="auth-container">
+        <!-- Login Form -->
+        <div id="login-form" class="card auth-card">
+            <div class="login-flex-row">
+                <div class="login-form-col">
+                    <div class="auth-header">
+                        <div class="logo">
+                            <h1>🌱 AgroSentry</h1>
+                            <p>Agricultural Monitoring Platform</p>
+                        </div>
+                    </div>
+                    <form id="login-form-element">
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" id="login-email" class="form-control" placeholder="priya.sharma@agro.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="login-password" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="remember-me">
+                                <span class="checkmark"></span>
+                                Remember me
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width">Sign In</button>
+                    </form>
+                    <div class="auth-links">
+                        <a href="#" id="show-register">Create new account</a> |
+                        <a href="#" id="forgot-password">Forgot password?</a>
+                    </div>
+                </div>
+                <div class="login-divider" aria-hidden="true"></div>
+                <div class="demo-credentials sleek">
+                    <div class="demo-title">Quick Demo Access</div>
+                    <div class="demo-row"><span class="demo-label">Email:</span> <span class="demo-value">priya.sharma@agro.com</span></div>
+                    <div class="demo-row"><span class="demo-label">Password:</span> <span class="demo-value">demo123</span></div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="demo-credentials">
+            <strong>Quick Demo Access:</strong><br />
+            Email: priya.sharma@agro.com<br />
+            Password: demo123
+        </div> -->
+
+        <!-- Registration Form -->
+        <div id="register-form" class="card auth-card hidden">
+            <div class="auth-header">
+                <div class="logo">
+                    <h1>🌱 AgroSentry</h1>
+                    <p>Create Your Account</p>
+                </div>
+            </div>
+            <form id="register-form-element">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" id="register-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" id="register-email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">User Role</label>
+                    <select id="register-role" class="form-control" required>
+                        <option value="">Select your role</option>
+                        <option value="Farmer">Farmer</option>
+                        <option value="Agronomist">Agronomist</option>
+                        <option value="Technician">Technician</option>
+                        <option value="Researcher">Researcher</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="register-password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" id="register-confirm-password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full-width">Create Account</button>
+            </form>
+            <div class="auth-links">
+                <a href="#" id="show-login">Already have an account? Sign in</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById('login-form-element').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // You can add authentication logic here
+            window.location.href = 'app.html';
+        });
+    </script>
+
+    <!-- Field Detail Modal -->
+    <div id="field-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-field-name">Field Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-field-details">
+                    <!-- Field details will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
